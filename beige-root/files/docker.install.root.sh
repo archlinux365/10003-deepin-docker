@@ -22,7 +22,9 @@ apt install -y openssh-server
 apt install -y git
 apt install -y osc
 apt install -y supervisor
+apt install -y rsync
 
+rsync -avzP ./supervisord/ /etc/
 
 cat /etc/passwd
 groupadd runner

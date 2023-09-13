@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  minio:
+    image: gnuhub/10003-deepin-docker-beige-root:latest
+    ports:
+      - "10322:22"
+      - "19111:9111"
+    volumes:
+      - ./:/home/www/dev
+    environment:
+      dev_version: deepin
+    command: /usr/bin/supervisord
+
