@@ -21,34 +21,26 @@ ls -al ./.ssh/
 env
 
 cd $CMD_PATH
-docker build . -f Dockerfile.$GITHUB_REF_NAME \
--t ghcr.io/${GITHUB_REPOSITORY}-$GITHUB_REF_NAME:$GITHUB_RUN_NUMBER -t ghcr.io/${GITHUB_REPOSITORY}-$GITHUB_REF_NAME:latest \
--t gnuhub/$PROJECT_NAME-$GITHUB_REF_NAME:$GITHUB_RUN_NUMBER -t gnuhub/$PROJECT_NAME-$GITHUB_REF_NAME:latest \
--t hkccr.ccs.tencentyun.com/${GITHUB_REPOSITORY}-$GITHUB_REF_NAME:$GITHUB_RUN_NUMBER -t hkccr.ccs.tencentyun.com/${GITHUB_REPOSITORY}-$GITHUB_REF_NAME:latest \
--t registry.cn-hangzhou.aliyuncs.com/${GITHUB_REPOSITORY}-$GITHUB_REF_NAME:$GITHUB_RUN_NUMBER -t registry.cn-hangzhou.aliyuncs.com/${GITHUB_REPOSITORY}-$GITHUB_REF_NAME:latest
 
 
-docker push ghcr.io/${GITHUB_REPOSITORY}-$GITHUB_REF_NAME:$GITHUB_RUN_NUMBER
-docker push ghcr.io/${GITHUB_REPOSITORY}-$GITHUB_REF_NAME:latest
-docker push registry.cn-hangzhou.aliyuncs.com/${GITHUB_REPOSITORY}-$GITHUB_REF_NAME:$GITHUB_RUN_NUMBER
-docker push registry.cn-hangzhou.aliyuncs.com/${GITHUB_REPOSITORY}-$GITHUB_REF_NAME:latest
-# docker push hkccr.ccs.tencentyun.com/${GITHUB_REPOSITORY}-$GITHUB_REF_NAME:$GITHUB_RUN_NUMBER 
-# docker push hkccr.ccs.tencentyun.com/${GITHUB_REPOSITORY}-$GITHUB_REF_NAME:latest 
-docker push gnuhub/$PROJECT_NAME-$GITHUB_REF_NAME:$GITHUB_RUN_NUMBER
-docker push gnuhub/$PROJECT_NAME-$GITHUB_REF_NAME:latest
+function docker_build()
+{
+	cd $1
+	docker build . -f Dockerfile \
+-t ghcr.io/${GITHUB_REPOSITORY}-$1:$GITHUB_RUN_NUMBER -t ghcr.io/${GITHUB_REPOSITORY}-$1:latest \
+-t gnuhub/$PROJECT_NAME-$1:$GITHUB_RUN_NUMBER -t gnuhub/$PROJECT_NAME-$1:latest \
+-t hkccr.ccs.tencentyun.com/${GITHUB_REPOSITORY}-$1:$GITHUB_RUN_NUMBER -t hkccr.ccs.tencentyun.com/${GITHUB_REPOSITORY}-$1:latest \
+-t registry.cn-hangzhou.aliyuncs.com/${GITHUB_REPOSITORY}-$1:$GITHUB_RUN_NUMBER -t registry.cn-hangzhou.aliyuncs.com/${GITHUB_REPOSITORY}-$1:latest
 
-cd ~/
-git clone git@github.com:archlinux365/10002-opensuse-docker.git
 
-cd 10002-opensuse-docker
+docker push ghcr.io/${GITHUB_REPOSITORY}-$1:$GITHUB_RUN_NUMBER
+docker push ghcr.io/${GITHUB_REPOSITORY}-$1:latest
+docker push registry.cn-hangzhou.aliyuncs.com/${GITHUB_REPOSITORY}-$1:$GITHUB_RUN_NUMBER
+docker push registry.cn-hangzhou.aliyuncs.com/${GITHUB_REPOSITORY}-$1:latest
+# docker push hkccr.ccs.tencentyun.com/${GITHUB_REPOSITORY}-$1:$GITHUB_RUN_NUMBER 
+# docker push hkccr.ccs.tencentyun.com/${GITHUB_REPOSITORY}-$1:latest 
+docker push gnuhub/$PROJECT_NAME-$1:$GITHUB_RUN_NUMBER
+docker push gnuhub/$PROJECT_NAME-$1:latest
+}
 
-rm -rf versions 
-
-cid=$(docker run -it --detach registry.cn-hangzhou.aliyuncs.com/archlinux365/10002-opensuse-docker-root:latest)
-docker cp ${cid}:/root/versions/ ./versions/
-
-git config --global user.email "gnuhub@gmail.com"
-git config --global user.name "gnuhub"
-git add .
-git commit -a -m "CI-BOT:$(date +%Y.%m.%d-%H%M%S)-$GITHUB_REF_NAME-$GITHUB_RUN_NUMBER"
-git push origin HEAD
+docker_build beige
