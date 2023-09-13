@@ -24,6 +24,17 @@ echo "root:opendde" | chpasswd
 echo "runner:opendde" | chpasswd
 echo "www:opendde" | chpasswd
 
+ apt install -y ca-certificates
+ apt install -y curl
+    apt install -y gnupg
+    apt install -y lsb-release
+    apt install -y openssh-server
+    apt install -y git
+    apt install -y osc
+    systemctl enable ssh
+    sed -i 's|ALL=(ALL:ALL) ALL|ALL=(ALL:ALL) NOPASSWD: ALL|g' /etc/sudoers
+    echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+
 mkdir -p /etc/sudoers.d
 echo "www ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/root-nopassword
 echo "runner ALL=(ALL) NOPASSWD: ALL"   > /etc/sudoers.d/runner-nopassword
