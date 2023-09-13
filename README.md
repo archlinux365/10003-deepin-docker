@@ -8,6 +8,7 @@
 1. vnc桌面
 1. vscode server
 1. linux管理面板
+1. 进程管理
 
 ## 1 文件夹说明
 

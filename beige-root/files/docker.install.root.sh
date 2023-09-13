@@ -23,8 +23,10 @@ apt install -y git
 apt install -y osc
 apt install -y supervisor
 apt install -y rsync
-
+apt install -y sudo
 rsync -avzP ./supervisord/ /etc/
+chmod +x 1.start.sh
+cp -fv ./1.start.sh /1.start.sh
 
 cat /etc/passwd
 groupadd runner

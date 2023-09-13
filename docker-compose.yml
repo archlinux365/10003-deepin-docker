@@ -10,5 +10,5 @@ services:
       - ./:/home/www/dev
     environment:
       dev_version: deepin
-    command: /usr/bin/supervisord
+    command: /1.start.sh
 
