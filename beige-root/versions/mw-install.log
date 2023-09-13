@@ -1,6 +1,3 @@
-您正在安装的是[31mmdserver-web测试版[0m，非开发测试用途请使用正式版 install.sh ！
-You are installing[31m mdserver-web dev version[0m, normally use install.sh for production.
-
 use system: Linux
 local:cn
 bash: line 101: unzip: command not found
