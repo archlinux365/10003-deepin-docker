@@ -44,4 +44,21 @@ docker push gnuhub/$PROJECT_NAME-$1:latest
 }
 
 docker_build beige
+docker_build beige-root
 
+
+cd ~/
+git clone git@github.com:archlinux365/10003-deepin-docker.git
+
+cd 10003-deepin-docker
+cd beige-root
+rm -rf versions 
+
+cid=$(docker run -it --detach ghcr.io/archlinux365/10003-deepin-docker-beige:latest)
+docker cp ${cid}:/root/versions/ ./versions/
+
+git config --global user.email "gnuhub@gmail.com"
+git config --global user.name "gnuhub"
+git add .
+git commit -a -m "CI-BOT:$(date +%Y.%m.%d-%H%M%S)-$GITHUB_REF_NAME-$GITHUB_RUN_NUMBER"
+git push origin HEAD
