@@ -47,3 +47,9 @@ docker-compose up -d
 1. 访问管理面板
 1. 访问vscode server
 1. 访问桌面
+
+## 5 账户密码 ssh以及桌面登陆 linux 面板
+
+1. root -> opendde
+1. www -> opendde
+1. 管理面板 --> 
