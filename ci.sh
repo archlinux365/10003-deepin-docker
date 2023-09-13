@@ -38,8 +38,8 @@ function docker_build()
 
 docker push ghcr.io/${GITHUB_REPOSITORY}-$1:$GITHUB_RUN_NUMBER
 docker push ghcr.io/${GITHUB_REPOSITORY}-$1:latest
-docker push registry.cn-hangzhou.aliyuncs.com/${GITHUB_REPOSITORY}-$1:$GITHUB_RUN_NUMBER
-docker push registry.cn-hangzhou.aliyuncs.com/${GITHUB_REPOSITORY}-$1:latest
+# docker push registry.cn-hangzhou.aliyuncs.com/${GITHUB_REPOSITORY}-$1:$GITHUB_RUN_NUMBER
+# docker push registry.cn-hangzhou.aliyuncs.com/${GITHUB_REPOSITORY}-$1:latest
 # docker push hkccr.ccs.tencentyun.com/${GITHUB_REPOSITORY}-$1:$GITHUB_RUN_NUMBER 
 # docker push hkccr.ccs.tencentyun.com/${GITHUB_REPOSITORY}-$1:latest 
 docker push gnuhub/$PROJECT_NAME-$1:$GITHUB_RUN_NUMBER
