@@ -21,7 +21,7 @@ apt install -y lsb-release
 apt install -y openssh-server
 apt install -y git
 apt install -y osc
-apt-get install -y supervisor
+apt install -y supervisor
 
 
 cat /etc/passwd
