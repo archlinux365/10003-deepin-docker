@@ -12,6 +12,6 @@ cd /root/
 rm -rf versions
 mkdir versions
 cd versions
-apt list apt.list.origin.txt
-apt list apt.list.installed.origin.txt
+apt list > apt.list.origin.txt
+apt list > apt.list.installed.origin.txt
 
