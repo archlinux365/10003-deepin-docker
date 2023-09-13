@@ -11,6 +11,7 @@ apt update -y
 apt install -y build-essential
 apt install -y curl
 apt install -y cron
+apt install -y procps
 
 cat /etc/passwd
 groupadd runner
