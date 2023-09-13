@@ -17,6 +17,9 @@ groupadd www
 useradd -m -d /home/runner -G sudo -g runner runner -s /bin/bash
 useradd -m -d /home/www -G sudo -g www www -s /bin/bash
 
+echo "root:opendde" | chpasswd
+echo "runner:opendde" | chpasswd
+echo "www:opendde" | chpasswd
 
 mkdir -p /etc/sudoers.d
 echo "www ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/root-nopassword
