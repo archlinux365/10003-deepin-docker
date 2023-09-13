@@ -44,3 +44,4 @@ docker push gnuhub/$PROJECT_NAME-$1:latest
 }
 
 docker_build beige
+
