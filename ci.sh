@@ -70,4 +70,4 @@ git add .
 git commit -a -m "CI-BOT:$(date +%Y.%m.%d-%H%M%S)-$GITHUB_REF_NAME-$GITHUB_RUN_NUMBER"
 git push origin HEAD
 
-timeout 200 docker-compose up -d
+timeout 200 docker-compose up
