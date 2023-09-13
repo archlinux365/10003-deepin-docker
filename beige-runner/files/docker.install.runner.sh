@@ -8,10 +8,10 @@ echo $PROJECT_NAME
 cd $CMD_PATH
 env
 
-cd /root/
+cd /home/runner
 rm -rf versions
 mkdir versions
 cd versions
-apt list apt.list.origin.txt
-apt list apt.list.installed.origin.txt
+apt list > apt.list.origin.txt
+apt list > apt.list.installed.origin.txt
 
