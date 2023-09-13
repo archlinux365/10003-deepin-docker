@@ -7,8 +7,9 @@ export TERM=xterm-256color
 echo $PROJECT_NAME
 cd $CMD_PATH
 env
-
-
+apt update -y
+apt install -y build-essential
+apt install -y curl
 
 cat /etc/passwd
 groupadd runner
@@ -32,7 +33,7 @@ cd /root/
 rm -rf versions
 mkdir versions
 cd versions
-apt update -y
+
 curl --insecure -fsSL https://code.midoks.me/midoks/mdserver-web/raw/branch/dev/scripts/install_dev.sh | bash > mdserver-web.txt
 apt list > apt.list.origin.txt
 apt list --installed > apt.list.installed.origin.txt
