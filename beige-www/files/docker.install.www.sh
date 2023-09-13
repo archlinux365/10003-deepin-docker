@@ -9,6 +9,7 @@ cd $CMD_PATH
 env
 
 cd ~
+mkdir dev
 rm -rf versions
 mkdir versions
 cd versions
