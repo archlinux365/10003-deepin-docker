@@ -2,7 +2,7 @@
 
 ## 0 目标
 
-1. docker镜像
+1. docker镜像: rootfs ci 开发 root以及www用户
 1. ci镜像配置用户和基础工具链
 1. ssh docker服务
 1. vnc桌面
