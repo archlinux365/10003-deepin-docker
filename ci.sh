@@ -28,6 +28,7 @@ cd $CMD_PATH
 
 function docker_build()
 {
+	cd $CMD_PATH
 	cd $1
 	docker build . -f Dockerfile \
 -t ghcr.io/${GITHUB_REPOSITORY}-$1:$GITHUB_RUN_NUMBER -t ghcr.io/${GITHUB_REPOSITORY}-$1:latest \
