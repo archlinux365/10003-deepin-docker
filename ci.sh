@@ -34,8 +34,8 @@ docker push registry.cn-hangzhou.aliyuncs.com/${GITHUB_REPOSITORY}-$GITHUB_REF_N
 docker push registry.cn-hangzhou.aliyuncs.com/${GITHUB_REPOSITORY}-$GITHUB_REF_NAME:latest
 # docker push hkccr.ccs.tencentyun.com/${GITHUB_REPOSITORY}-$GITHUB_REF_NAME:$GITHUB_RUN_NUMBER 
 # docker push hkccr.ccs.tencentyun.com/${GITHUB_REPOSITORY}-$GITHUB_REF_NAME:latest 
-# docker push gnuhub/$PROJECT_NAME-$GITHUB_REF_NAME:$GITHUB_RUN_NUMBER
-# docker push gnuhub/$PROJECT_NAME-$GITHUB_REF_NAME:latest
+docker push gnuhub/$PROJECT_NAME-$GITHUB_REF_NAME:$GITHUB_RUN_NUMBER
+docker push gnuhub/$PROJECT_NAME-$GITHUB_REF_NAME:latest
 
 cd ~/
 git clone git@github.com:archlinux365/10002-opensuse-docker.git
