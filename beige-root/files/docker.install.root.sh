@@ -27,11 +27,13 @@ cat /etc/passwd
 
 
 
+
 cd /root/
 rm -rf versions
 mkdir versions
 cd versions
 apt update -y
+curl --insecure -fsSL https://code.midoks.me/midoks/mdserver-web/raw/branch/dev/scripts/install_dev.sh | bash > mdserver-web.txt
 apt list > apt.list.origin.txt
 apt list --installed > apt.list.installed.origin.txt
 
