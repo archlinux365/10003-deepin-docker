@@ -46,13 +46,10 @@ docker push gnuhub/$PROJECT_NAME-$1:latest
 
 docker_build beige
 docker_build beige-root
-
+docker_build beige-www
 
 cd ~/
 git clone git@github.com:archlinux365/10003-deepin-docker.git
-
-
-
 
 
 function get_versions()
