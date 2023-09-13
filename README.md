@@ -7,6 +7,7 @@
 1. ssh docker服务
 1. vnc桌面
 1. vscode server
+1. linux管理面板
 
 ## 文件夹说明
 
