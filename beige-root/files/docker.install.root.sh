@@ -8,11 +8,21 @@ echo $PROJECT_NAME
 cd $CMD_PATH
 env
 apt update -y
+# 1 安装需要的包
 apt install -y build-essential
 apt install -y curl
 apt install -y cron
 apt install -y procps
 apt install -y unzip
+apt install -y ca-certificates
+apt install -y curl
+apt install -y gnupg
+apt install -y lsb-release
+apt install -y openssh-server
+apt install -y git
+apt install -y osc
+apt-get install -y supervisor
+
 
 cat /etc/passwd
 groupadd runner
@@ -24,16 +34,8 @@ echo "root:opendde" | chpasswd
 echo "runner:opendde" | chpasswd
 echo "www:opendde" | chpasswd
 
- apt install -y ca-certificates
- apt install -y curl
-    apt install -y gnupg
-    apt install -y lsb-release
-    apt install -y openssh-server
-    apt install -y git
-    apt install -y osc
-    systemctl enable ssh
-    sed -i 's|ALL=(ALL:ALL) ALL|ALL=(ALL:ALL) NOPASSWD: ALL|g' /etc/sudoers
-    echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+sed -i 's|ALL=(ALL:ALL) ALL|ALL=(ALL:ALL) NOPASSWD: ALL|g' /etc/sudoers
+echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 
 mkdir -p /etc/sudoers.d
 echo "www ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/root-nopassword
@@ -43,9 +45,6 @@ chmod 750 /etc/sudoers.d/runner-nopassword
 chmod 750 /etc/sudoers.d/
 cat /etc/passwd
 
-
-
-
 cd /root/
 rm -rf versions
 mkdir versions
@@ -54,4 +53,3 @@ cd versions
 curl --insecure -fsSL https://code.midoks.me/midoks/mdserver-web/raw/branch/dev/scripts/install_dev.sh | bash > mdserver-web.txt
 apt list > apt.list.origin.txt
 apt list --installed > apt.list.installed.origin.txt
-
