@@ -18,9 +18,6 @@ cat /home/runner/.ssh/known_hosts
 git config --global user.email "gnuhub@gmail.com"
 git config --global user.name "gnuhub"
 
-cd $CMD_PATH/files/
-rsync -avzP ~/.ssh/ ./.ssh/
-ls -al ./.ssh/
 env
 
 cd $CMD_PATH
