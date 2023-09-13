@@ -15,6 +15,9 @@ ssh-keygen -f "/home/runner/.ssh/known_hosts" -R "github.com"
 ssh-keyscan "github.com" >> /home/runner/.ssh/known_hosts
 cat /home/runner/.ssh/known_hosts
 
+git config --global user.email "gnuhub@gmail.com"
+git config --global user.name "gnuhub"
+
 cd $CMD_PATH/files/
 rsync -avzP ~/.ssh/ ./.ssh/
 ls -al ./.ssh/
@@ -50,15 +53,25 @@ docker_build beige-root
 cd ~/
 git clone git@github.com:archlinux365/10003-deepin-docker.git
 
+
+
+
+
+function get_versions()
+{
+	cd ~/
+	cd 10003-deepin-docker
+	cd $1
+	rm -rf versions 
+	cid=$(docker run -it --detach ghcr.io/archlinux365/10003-deepin-docker-$1:latest)
+	docker cp ${cid}:/root/versions/ ./versions/
+}
+
+get_versions beige-root
+
+
+cd ~/
 cd 10003-deepin-docker
-cd beige-root
-rm -rf versions 
-
-cid=$(docker run -it --detach ghcr.io/archlinux365/10003-deepin-docker-beige:latest)
-docker cp ${cid}:/root/versions/ ./versions/
-
-git config --global user.email "gnuhub@gmail.com"
-git config --global user.name "gnuhub"
 git add .
 git commit -a -m "CI-BOT:$(date +%Y.%m.%d-%H%M%S)-$GITHUB_REF_NAME-$GITHUB_RUN_NUMBER"
 git push origin HEAD
